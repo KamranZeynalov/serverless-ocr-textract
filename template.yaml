@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: OCR Text Extractor Service
+
+Globals:
+  Function:
+    Runtime: java17
+    Timeout: 10
+    MemorySize: 512
+
+Resources:
+  GeneratePreSignedUrlHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.company.GeneratePreSignedUrlHandler::handleRequest
+      CodeUri: .
+      Environment:
+        Variables:
+          BUCKET_NAME: ocr-upload-bucket-5637286
+      Policies:
+        - S3ReadPolicy:
+            BucketName: ocr-upload-bucket-5637286
+        - S3WritePolicy:
+            BucketName: ocr-upload-bucket-5637286
+      Events:
+        GeneratePreSignedUrlApi:
+          Type: Api
+          Properties:
+            Path: /pre-signed-url
+            Method: post
+
+  ProcessImageHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.company.ProcessImageHandler::handleRequest
+      CodeUri: .
+      Environment:
+        Variables:
+          BUCKET_NAME: ocr-upload-bucket-5637286
+      Policies:
+        - AmazonTextractFullAccess
+        - S3ReadPolicy:
+            BucketName: ocr-upload-bucket-5637286
+
+  ProcessImageInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !GetAtt ProcessImageHandler.Arn
+      Action: lambda:InvokeFunction
+      Principal: s3.amazonaws.com
+      SourceArn: arn:aws:s3:::ocr-upload-bucket-5637286
+
+Outputs:
+  ApiUrl:
+    Description: "Generate Pre-signed URL Endpoint"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/pre-signed-url"
