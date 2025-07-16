@@ -5,6 +5,7 @@
 [![API Gateway](https://img.shields.io/badge/API%20Gateway-REST-orange?logo=amazon-aws)](https://aws.amazon.com/api-gateway/)
 [![S3](https://img.shields.io/badge/S3-Storage-569A31?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/s3/)
 [![AWS Textract](https://img.shields.io/badge/AWS%20Textract-OCR-0972D5?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/textract/)
+[![CloudWatch](https://img.shields.io/badge/CloudWatch-Logs-6C2EB8?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/cloudwatch/)
 [![AWS SAM](https://img.shields.io/badge/SAM-IaC-FF9900?logo=aws)](https://aws.amazon.com/serverless/sam/)
 
 
@@ -25,7 +26,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## 🧱 Tech Stack
 
 - **Language:** Java 17
 - **Build Tool:** Maven
@@ -88,7 +89,7 @@ sam deploy --guided
 ```
 ---
 
-## 🖼️ Screenshots
+## ✨ Screenshots
 
 ### 🚀 API Gateway
 ![API Gateway](assets/aws-api-gateway.PNG)
