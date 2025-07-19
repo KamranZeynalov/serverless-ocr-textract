@@ -17,6 +17,7 @@
 
 - [Tech Stack](#-tech-stack)
 - [Features](#-features)
+- [Architecture Diagram](#-architecture-diagram)
 - [Live Demo](#-live-demo)
 - [API Endpoints](#-api-endpoints)
 - [Deployment (via SAM)](#-deployment-via-sam)
@@ -44,6 +45,12 @@
 - 🔐 Pre-signed URL generation to securely upload images
 - 📦 Lambda auto-triggered via S3 event notifications
 - 📄 Text extracted from image using Textract’s `DetectDocumentText`
+
+---
+
+## 📊 Architecture Diagram
+
+**UNDER CONSTRUCTION**
 
 ---
 
