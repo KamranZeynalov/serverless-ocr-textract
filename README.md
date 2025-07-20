@@ -50,7 +50,7 @@
 
 ## 📊 Architecture Diagram
 
-**UNDER CONSTRUCTION**
+![Architecture Diagram](assets/architecture_diagram.PNG)
 
 ---
 
