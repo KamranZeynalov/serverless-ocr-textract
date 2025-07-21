@@ -50,8 +50,19 @@
 
 ## 📊 Architecture Diagram
 
-**UNDER CONSTRUCTION**
+![Architecture Diagram](assets/architecture_diagram.PNG)
 
+### 🔄 Flow Summary
+
+1. Client sends a `POST /pre-signed-url` request to API Gateway.
+2. API Gateway invokes the `GeneratePresignedUrlFunction` Lambda.
+3. Lambda generates a pre-signed S3 URL and returns it with the object key.
+4. API Gateway returns the response to the client.
+5. Client uploads the image directly to S3 using the pre-signed URL.
+6. S3 triggers the `ProcessImageFunction` Lambda via event notification.
+7. Lambda calls AWS Textract to extract text using `DetectDocumentText`.
+8. Textract returns the extracted text to Lambda.
+9. Lambda logs the result to CloudWatch.(can be stored in DynamoDB)
 ---
 
 ## 🧭 Live Demo
